@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Adarsh Automation - Docker</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='assets/img/favicon.png') }}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static',filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static',filename='assets/css/style.css') }}" rel="stylesheet">
+    <style>
+        /* The Modal (background) */
+        
+        .modal,
+        .modal1,
+        .modal2 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal3,
+        .modal4,
+        .modal5 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 80%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        /* Modal Content */
+        
+        .modal-content,
+        .modal-content1,
+        .modal-content2,
+        .modal-content3,
+        .modal-content4,
+        .modal-content5 {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+        /* The Close Button */
+        
+        .close,
+        .close1,
+        .close2,
+        .close3,
+        .close4,
+        .close5 {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close2:hover,
+        .close2:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close1:hover,
+        .close1:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close3:hover,
+        .close3:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close4:hover,
+        .close4:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .close5:hover,
+        .close5:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .modal-header,
+        .modal-header1,
+        .modal-header2,
+        .modal-header3,
+        .modal-header4,
+        .modal-header5 {
+            padding: 2px 16px;
+            text-align: center;
+            background-color: #5586ca;
+            color: white;
+        }
+        
+        .modal-body,
+        .modal-body1,
+        .modal-body2,
+        .modal-body3,
+        .modal-body4,
+        .modal-body5 {
+            padding: 2px 16px;
+        }
+        
+        .modal-footer,
+        .modal-footer1,
+        .modal-footer2,
+        .modal-footer3,
+        .modal-footer4,
+        .modal-footer5 {
+            padding: 2px 16px;
+            background-color: #5586ca;
+            color: white;
+        }
+        
+        #btnn1,
+        #btnn2,
+        #btnn3,
+        #btnn4,
+        #btnn5,
+        #btnn6,
+        #btnn7,
+        #btnn8,
+        #btnn9,
+        #btnn10,
+        #btnn11,
+        #btnn12 {
+            margin-left: 45%;
+        }
+    </style>
+</head>
+
+<script>
+    function digital(cmd, p, b1, b2) {
+        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
+        document.getElementById(b1).style.display = "none";
+        document.getElementById(b2).style.display = "block";
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://3.84.83.184/cgi-bin/digital.py?x=" + cmd, true);
+        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
+        xhr.send();
+        xhr.onload = function() {
+            var output = xhr.responseText;
+            document.getElementById(p).innerHTML = output;
+        }
+    }
+
+    function digital_show(p, b1, b2) {
+        document.getElementById(p).innerHTML = "Click on the button to get the output ...";
+        document.getElementById(b1).style.display = "none";
+        document.getElementById(b2).style.display = "block";
+    }
+
+    function digital_one(cmd, name, h, b1, b2, p) {
+        var xhr = new XMLHttpRequest();
+        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
+        document.getElementById(h).style.display = "none";
+        document.getElementById(b1).style.display = "none";
+        document.getElementById(b2).style.display = "block";
+        var y = document.getElementById(name).value;
+        document.getElementById(name).style.display = "none";
+        xhr.open("GET", "http://3.84.83.184/cgi-bin/digital.py?x=" + cmd + "&y=" + y, true);
+        xhr.send();
+        xhr.onload = function() {
+            var output = xhr.responseText;
+            document.getElementById(p).innerHTML = output;
+        }
+    }
+
+    function digital_one_show(h, i, p, b1, b2) {
+        document.getElementById(h).style.display = "block";
+        document.getElementById(i).style.display = "block";
+        document.getElementById(p).innerHTML = "";
+        document.getElementById(b2).style.display = "block";
+        document.getElementById(b1).style.display = "none";
+    }
+
+    function digital_two(cmd, img, ver, p, h1, h2, i1, i2, b1, b2) {
+        var xhr = new XMLHttpRequest();
+        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
+        document.getElementById(h1).style.display = "none";
+        document.getElementById(h2).style.display = "none";
+        document.getElementById(i1).style.display = "none";
+        document.getElementById(i2).style.display = "none";
+        document.getElementById(b1).style.display = "none";
+        document.getElementById(b2).style.display = "block";
+        var y = document.getElementById(img).value;
+        var z = document.getElementById(ver).value;
+        xhr.open("GET", "http://3.84.83.184/cgi-bin/digital.py?x=" + cmd + "&y=" + y + "&z=" + z, true);
+        xhr.send();
+        xhr.onload = function() {
+            var output = xhr.responseText;
+            document.getElementById(p).innerHTML = output;
+        }
+    }
+
+    function digital_two_show(p, h1, h2, i1, i2, b1, b2) {
+        document.getElementById(p).innerHTML = "";
+        document.getElementById(h1).style.display = "block";
+        document.getElementById(h2).style.display = "block";
+        document.getElementById(i1).style.display = "block";
+        document.getElementById(i2).style.display = "block";
+        document.getElementById(b1).style.display = "block";
+        document.getElementById(b2).style.display = "none";
+    }
+</script>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center justify-content-between">
+
+		<h1 class="logo"><a href="{{ url_for('index') }}">Adarsh</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}">Home</a></li>
+			        <li><a class="nav-link scrollto active" href="{{ url_for('docker') }}">Docker</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('kubernetes') }}">Kubernetes</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('team') }}">Team</a></li>
+			        <li><a class="getstarted scrollto" href="{{ url_for('docker') }}">Get Started</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services section-bg">
+            <div class="container" data-aos="fade-up">
+                <br /><br />
+                <div class="section-title">
+			<img src="{{ url_for('static',filename='assets/img/Moby-logo.png') }}" text-align="center">
+                    <br /><br /><br />
+                    <h2>Docker Sevices</h2>
+                    <br />
+                    <p>Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies,
+                        and deploy it as one package.</p>
+                </div>
+                <br /><br />
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box iconbox-blue">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4>Launch a Container</h4>
+                            <p>Launches a new Container inside the host machine</p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn">Launch</button></h4>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h2>Launch a Container</h2>
+                            </div>
+                            <div class="modal-body">
+                                <br /><br /><br />
+                                <h6 id="l1">Enter Image Name: </h6>
+                                <input type="text" class="form-control" id="name" placeholder="Image" required>
+                                <br /><br />
+                                <h6 id="l2">Enter Version: </h6>
+                                <input type="text" class="form-control" id="ver" placeholder="Version" required>
+                                <p id="p3"></p>
+                                <button type="button" id="btnn2" class="btn btn-outline-secondary" onclick="digital_two_show('p3', 'l1', 'l2', 'name', 'ver', 'btnn1', 'btnn2');">Back</button>
+                                <button type="button" id="btnn1" class="btn btn-outline-secondary" onclick="digital_two('run', 'name', 'ver', 'p3', 'l1', 'l2', 'name', 'ver', 'btnn1', 'btnn2')">Submit</button>
+                                <br /><br /><br />
+                            </div>
+                            <div class="modal-footer">
+                                <h3> </h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <script>
+                        var modal = document.getElementById("myModal");
+                        var btn = document.getElementById("myBtn");
+                        document.getElementById("btnn2").style.display = "none";
+                        var span = document.getElementsByClassName("close")[0];
+                        btn.onclick = function() {
+                            modal.style.display = "block";
+                        }
+                        span.onclick = function() {
+                            modal.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box iconbox-orange ">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4>Remove a Container</h4>
+                            <p>Remove Containers: Remove one or more containers</p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn1">Remove Container</button></h4>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div id="myModal1" class="modal1">
+                        <!-- Modal content -->
+                        <div class="modal-content1">
+                            <div class="modal-header1">
+                                <span class="close1">&times;</span>
+                                <h2>Remove Containers</h2>
+                            </div>
+                            <div class="modal-body1">
+                                <br /><br />
+                                <h6 id="l3">Enter Container ID / Name : </h6>
+                                <input type="text" class="form-control" id="rem" placeholder="Container Name/ID" required>
+                                <p id="p4"></p>
+
+                                <br />
+                                <button type="button" id="btnn4" class="btn btn-outline-secondary" onclick="digital_one('rem', 'rem','l3', 'btnn4', 'btnn3', 'p4');">Submit</button>
+                                <br />
+                                <button type="button" id="btnn3" class="btn btn-outline-secondary" onclick="digital_one_show('l3', 'rem', 'p4', 'btnn3', 'btnn4');">Back</button>
+                                <br /><br />
+                            </div>
+                            <div class="modal-footer1">
+                                <h3> </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var modal1 = document.getElementById("myModal1");
+                        var btn1 = document.getElementById("myBtn1");
+                        document.getElementById("btnn3").style.display = "none";
+                        var span1 = document.getElementsByClassName("close1")[0];
+                        btn1.onclick = function() {
+                            modal1.style.display = "block";
+                        }
+                        span1.onclick = function() {
+                            modal1.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal1) {
+                                modal1.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon-box iconbox-pink">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4><a href="">Remove Image</a></h4>
+                            <p>Remove Image: Removes (and un-tags) one or more images from the host node.</p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn2">Remove Images</button></h4>
+                        </div>
+                    </div>
+                    <!-- The Modal -->
+                    <div id="myModal2" class="modal2">
+                        <!-- Modal content -->
+                        <div class="modal-content2">
+                            <div class="modal-header2">
+                                <span class="close2">&times;</span>
+                                <h2>Remove Images</h2>
+                            </div>
+                            <div class="modal-body2">
+                                <br /><br />
+                                <h6 id="l4">Enter Container ID / Name : </h6>
+                                <input type="text" class="form-control" id="remi" placeholder="Image Name" required>
+                                <p id="p5"></p>
+
+                                <br />
+                                <button type="button" id="btnn6" class="btn btn-outline-secondary" onclick="digital_one('remi', 'remi','l4', 'btnn6', 'btnn5', 'p5');">Submit</button>
+                                <br />
+                                <button type="button" id="btnn5" class="btn btn-outline-secondary" onclick="digital_one_show('l4', 'remi', 'p5', 'btnn5', 'btnn6');">Back</button>
+                                <br /><br />
+                            </div>
+                            <div class="modal-footer2">
+                                <h3> </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var modal2 = document.getElementById("myModal2");
+                        var btn2 = document.getElementById("myBtn2");
+                        document.getElementById("btnn5").style.display = "none";
+                        var span2 = document.getElementsByClassName("close2")[0];
+                        btn2.onclick = function() {
+                            modal2.style.display = "block";
+                        }
+                        span2.onclick = function() {
+                            modal2.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal2) {
+                                modal2.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box iconbox-yellow">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4><a href="">Docker Execute</a></h4>
+                            <p>Docker Execute: Runs a new command in a running container.</p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn3">Docker Execute</button></h4>
+                        </div>
+                    </div>
+
+                    <!-- The Modal -->
+                    <div id="myModal3" class="modal3">
+                        <!-- Modal content -->
+                        <div class="modal-content3">
+                            <div class="modal-header3">
+                                <span class="close3">&times;</span>
+                                <h2>Docker Execute</h3>
+                            </div>
+                            <div class="modal-body3">
+                                <br /><br /><br />
+                                <h6 id="l5">Enter Container ID / Name: </h6>
+                                <input type="text" class="form-control" id="cid" placeholder="Container ID" required>
+                                <br /><br />
+                                <h6 id="l6">Enter Command: </h6>
+                                <input type="text" class="form-control" id="command" placeholder="Command" required>
+                                <p id="p6"></p>
+                                <button type="button" id="btnn8" class="btn btn-outline-secondary" onclick="digital_two_show('p6', 'l5', 'l6', 'cid', 'command', 'btnn7', 'btnn8');">Back</button>
+                                <button type="button" id="btnn7" class="btn btn-outline-secondary" onclick="digital_two('exec', 'cid', 'command', 'p6', 'l5', 'l6', 'cid', 'command', 'btnn7', 'btnn8')">Execute</button>
+                                <br /><br /><br />
+                            </div>
+                            <div class="modal-footer3">
+                                <h3> </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var modal3 = document.getElementById("myModal3");
+                        var btn3 = document.getElementById("myBtn3");
+                        document.getElementById("btnn8").style.display = "none";
+                        var span3 = document.getElementsByClassName("close3")[0];
+                        btn3.onclick = function() {
+                            modal3.style.display = "block";
+                        }
+                        span3.onclick = function() {
+                            modal3.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal3) {
+                                modal3.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="icon-box iconbox-red">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4>Docker Images</h4>
+                            <p>List All Docker Images present inside the machine</p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn4">Docker Images</button></h4>
+                        </div>
+                    </div>
+                    <div id="myModal4" class="modal4">
+                        <!-- Modal content -->
+                        <div class="modal-content4">
+                            <div class="modal-header4">
+                                <span class="close4">&times;</span>
+                                <h2>Docker Images</h3>
+                            </div>
+                            <div class="modal-body4">
+                                <br />
+                                <p id="p7">Click on the button to get the output</p>
+                                <br /><br />
+                                <button type="button" id="btnn9" class="btn btn-outline-secondary" onclick="digital('images', 'p7', 'btnn9', 'btnn10');">Docker Images</button>
+                                <button type="button" id="btnn10" class="btn btn-outline-secondary" onclick="digital_show('p7', 'btnn10', 'btnn9');">Back</button>
+                                <br /><br />
+                            </div>
+                            <div class="modal-footer4">
+                                <h3> </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var modal4 = document.getElementById("myModal4");
+                        var btn4 = document.getElementById("myBtn4");
+                        document.getElementById("btnn10").style.display = "none";
+                        var span4 = document.getElementsByClassName("close4")[0];
+                        btn4.onclick = function() {
+                            modal4.style.display = "block";
+                        }
+                        span4.onclick = function() {
+                            modal4.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal4) {
+                                modal4.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="icon-box iconbox-teal">
+                            <div class="icon">
+				    <img src="{{ url_for('static',filename='assets/img/resize_64.png') }}">
+                            </div>
+                            <h4>Show Running Containers</h4>
+                            <p>List all Docker Running Containers running inside the machine </p>
+                            <br />
+                            <h4><button type="button" class="btn btn-outline-secondary" id="myBtn5">Docker Process</button></h4>
+                        </div>
+                    </div>
+                    <div id="myModal5" class="modal5">
+                        <!-- Modal content -->
+                        <div class="modal-content5">
+                            <div class="modal-header5">
+                                <span class="close5">&times;</span>
+                                <h2>Running Containers</h3>
+                            </div>
+                            <div class="modal-body5">
+                                <br />
+                                <p id="p8">Click on the button to get the output</p>
+                                <button type="button" id="btnn11" class="btn btn-outline-secondary" onclick="digital('list', 'p8', 'btnn11', 'btnn12');">Docker Process</button>
+                                <button type="button" id="btnn12" class="btn btn-outline-secondary" onclick="digital_show('p8', 'btnn12', 'btnn11');">Back</button>
+                            </div>
+                            <br /><br />
+                            <div class="modal-footer5">
+                                <h3> </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        var modal5 = document.getElementById("myModal5");
+                        var btn5 = document.getElementById("myBtn5");
+                        document.getElementById("btnn12").style.display = "none";
+                        var span5 = document.getElementsByClassName("close5")[0];
+                        btn5.onclick = function() {
+                            modal5.style.display = "block";
+                        }
+                        span5.onclick = function() {
+                            modal5.style.display = "none";
+                        }
+                        window.onclick = function(event) {
+                            if (event.target == modal5) {
+                                modal5.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <!-- End #main -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static',filename='assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/purecounter/purecounter.js') }}"></script>
+    <script src="{{ url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+
+</body>
+
+</html>
