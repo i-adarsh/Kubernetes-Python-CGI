@@ -1,0 +1,5 @@
+#!/usr/local/bin/bash
+
+git add .
+git commit -m "Last Commit"
+git push
