@@ -1,7 +1,11 @@
 from flask import Flask,render_template,request,url_for
+<<<<<<< HEAD
 import os,subprocess
 import requests
 from flask import Flask, flash, request, redirect, url_for
+=======
+import os
+>>>>>>> 58865fd882e8867a87e5e97952654c1e52e29f81
 from werkzeug.utils import secure_filename
 
 app=Flask("My_k8s_App")
