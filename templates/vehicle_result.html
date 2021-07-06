@@ -31,17 +31,14 @@
 
 </head>
 <script>
-    function kube(cmd, p, b1, b2) {
-        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
-        document.getElementById(b1).style.display = "none";
-        document.getElementById(b2).style.display = "block";
+    function vehicle() {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://54.175.225.126/cgi-bin/kube.py?x=" + cmd, true);
-        document.getElementById(p).innerHTML = "Output is Coming, Please Wait...";
+        xhr.open("GET", "http://34.237.141.15/cgi-bin/test.py", true);
+        document.getElementById("text").innerHTML = "Output is Coming, Please Wait...";
         xhr.send();
         xhr.onload = function() {
             var output = xhr.responseText;
-            document.getElementById(p).innerHTML = output;
+            document.getElementById("text").innerHTML = "<pre>" + output + "</pre>";
         }
     }
 </script>
@@ -73,35 +70,21 @@
     <!-- End Header -->
 
     <!-- ======= About Video Section ======= -->
-    <section id="about-video" class="services section-bg">
-        <div class="container" data-aos="fade-up">
-            <br /><br /><br />
-            <div class="row">
-                <br /><br /><br /><br />
-                <div class="col-lg-6 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
-                    <img src="{{ url_for('static',filename='assets/img/car.gif') }}" class="img-fluid" alt="">
-                </div>
-
-                <div class="col-lg-6 col-md-6 d-flex align-items-stretch " data-aos="zoom-in " data-aos-delay="100 ">
-                    <div class="icon-box iconbox-blue ">
-                        <h2 style="text-align: center;">Vehicle Detection System</h2>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <br /><br /><br />
-                        <p>
-                            <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
-                                <input type="file" name="file" /><br /><br />
-                                <input class="btn btn-outline-secondary" value="Upload" type="submit" />
-                            </form>
-                        </p>
-                    </div>
-                </div>
-
+    <div class="row" style="margin-left: 20%;">
+        <div class="col-lg-12 col-md-6 d-flex align-items-stretch " data-aos="zoom-in " data-aos-delay="100 ">
+            <div class="icon-box iconbox-blue ">
+                <h2 style="text-align: center;">Vehicle Detection System</h2>
+                <br /><br /><br />
+                <p id="text" style="text-align: left;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <br /><br /><br />
+                <p>
+                    <button class="btn btn-outline-secondary" onclick="vehicle();" value="Get Result">Details</button>
+                </p>
             </div>
-
         </div>
-    </section>
+    </div>
     <!-- End About Video Section -->
 
     <div id="preloader"></div>

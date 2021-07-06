@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,url_for
-import os
+import os,subprocess
+import requests
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
@@ -25,12 +26,15 @@ def team():
 def vehicle_detection():
     return render_template("vehicle_detection.html")
 
+@app.route("/vehicle_result")
+def vehicle_result():
+    return render_template("vehicle_result.html")
 
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-UPLOAD_FOLDER = '/Users/adarshkumar/Documents/Flask/Kubernetes-Python-CGI/Files'
+UPLOAD_FOLDER = '/root/Kubernetes-Python-CGI/Files/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -51,11 +55,18 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return render_template("index.html")
-#    if request.method == 'POST':
-#       f = request.files['file']
-#       f.save(secure_filename(f.filename))
-#       return 'file uploaded successfully'
+            cmd = f"python3 -W ignore test.py {filename}"
+            print(cmd)
+            o = subprocess.getoutput(cmd)
+            print(o)
+            return(o)
+
+
+    # if request.method == 'POST':
+    #     f = request.files['file']
+    #     f.save(secure_filename(f.filename))
+    #     return 'file uploaded successfully'
+
 
 if __name__=="__main__":
-    app.run(host = "0.0.0.0", port = 5000,debug=True)
+    app.run(host = "0.0.0.0", port = 5000,debug=True,threaded=True)
