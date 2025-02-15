@@ -1,17 +1,11 @@
 #!/usr/local/bin/bash
 
 yum upgrade -y
-yum install python3 -y
-yum install vim -y
-yum install git -y
-yum install tree -y
+yum install python3 vim git wget mesa-libGL httpd  -y
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 dnf install unzip -y
 unzip awscliv2.zip
 sudo ./aws/install
-yum install wget -y
-yum install mesa-libGL -y
-yum install httpd -y
 
 git clone https://github.com/i-adarsh/Plate-Detection-Model.git
 cd Plate-Detection-Model/
