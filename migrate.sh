@@ -26,6 +26,7 @@ pip3 install torch
 pip3 install easyocr
 pip3 install imutils
 
+pip3 install --break-system-packages --upgrade pip && pip3 install --break-system-packages flask boto3 scikit-build opencv-python glob2 numpy matplotlib torch easyocr imutils
 
 sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
 sudo dnf upgrade -y
